@@ -1,0 +1,36 @@
+/* 上下滑动 */
+.btot-enter ,.btot-leave-to{
+  transform: translate(0,100%);
+}
+.btot-enter-active ,.btot-leave-active{
+  transition: transform 0.3s linear
+}
+.btot-enter-to, .btot-leave{
+  transform: translate(0,0);
+}
+/* 左滑动 */
+.ltor-enter {
+  transform: translate(100%,0);
+}
+.ltor-enter-active ,.ltor-leave-active{
+  transition: transform 0.3s linear
+}
+.ltor-enter-to{
+  transform: translate(0,0);
+}
+.ltor-leave{
+  transform: translate(0,0);
+}
+.ltor-leave-to{
+  transform: translate(-100%,0);
+}
+/* 右滑动 */
+.rtol-enter ,.rtol-leave-to{
+  transform: translate(0,0);
+}
+.rtol-enter-active ,.rtol-leave-active{
+  transition: transform 0.3s linear
+}
+.rtol-enter-to, .rtol-leave{
+  transform: translate(100%,0);
+}
