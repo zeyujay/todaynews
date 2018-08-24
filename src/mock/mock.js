@@ -5,14 +5,14 @@ const Data = []
 const LabelData = []
 const NewsData = []
 const Search = []
-for (let i = 0; i < 60; i++) {
+for (let i = 2; i <= 62; i++) {
   let label={
     'id':i,
-    'label':Random.cword(2)
+    'label':Random.cword(2,5)
   }
   LabelData.push(label)
 }
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 500; i++) {
   let news = {
     'id':i,
     'title':Random.csentence(20,20),
@@ -25,7 +25,7 @@ for (let i = 0; i < 10; i++) {
     'commentnum':Random.natural(0,99999999),
     'starnum':Random.natural(0,99999999),
     'type':Random.natural(0,5),
-    // 'articletype':Random.natural(0,59),
+    'contenttype':Random.natural(2,62),
     // 'content':Random.csentence()
   }
   NewsData.push(news)

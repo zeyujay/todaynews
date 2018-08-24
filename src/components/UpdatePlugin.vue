@@ -26,6 +26,7 @@
   background-color:rgba(242 , 243, 245, 1);
   padding-top: 1.0rem;
   display: inline-block;
-  z-index: 999;
+  position: absolute;
+  z-index: -1;
 }
 </style>

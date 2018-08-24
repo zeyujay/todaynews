@@ -1,14 +1,12 @@
 <template id="">
-<div class="footer">
-  <ul>
-    <li class="footerLi" v-for="item in footerBar">
+  <ul class="footer">
+    <li v-for="item in footerBar">
         <router-link :to="{name:item.page}">
           <i :class="'iconfont icon-'+item.icon"></i>
           <br>{{item.label}}
         </router-link>
     </li>
   </ul>
-</div>
 </template>
 <script type="text/javascript">
   export default{
@@ -30,23 +28,21 @@
   }
 </script>
 <style media="screen">
-  .footer{
-    position: fixed;
-    bottom: 0rem;
-    height:0.8rem;
+  .footer {
     width: 100%;
-    box-shadow: inset 0px 1px 1px -1px #c8c7cc;
+    flex:1.5;
+    order: 99;
     background-color: rgb(242, 243, 245);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* flex-wrap: nowrap; */
   }
-  .footerLi{
-    float: left;
-    width: 20%;
-    text-align:center;
-    color:#000;
-    font-size: 0.2rem;
-    line-height: 0.3rem;
-    margin-top: 0.1rem;
-    /* -webkit-text-stroke: 2px #ffffff; */
+  .footer li{
+    text-align: center;
+    flex: 1
   }
   .footerLi i{
 

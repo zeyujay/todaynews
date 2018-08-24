@@ -2,16 +2,17 @@
     <div class="home">
       <Header-Bar></Header-Bar>
       <Label-Nav :labelList="labelList" ></Label-Nav>
-      <Update-Plugin></Update-Plugin>
+      <!-- <Update-Plugin></Update-Plugin> -->
       <Con-Tent :contentList="newsList"></Con-Tent>
       <Footer-Bar></Footer-Bar>
       <Label-List></Label-List>
+
     </div>
 </template>
 <script type="text/javascript">
   import api from "../../axios/api"
   import HeaderBar from '../HeaderBar.vue'
-  import LabelNav from './LabelNav.vue'
+  import LabelNav from '../LabelNav.vue'
   import ConTent from '../ConTent.vue'
   import FooterBar from '../FooterBar.vue'
   import LabelList from '../LabelList.vue'
@@ -40,7 +41,7 @@
     methods:{
       getLabelList:function(){
         api.getData('/','').then(res=>{
-          this.labelList = res
+          this.$store.commit('addNewsLabel',res)
         })
       },
       getNewsList:function(){
@@ -56,6 +57,8 @@
   .home{
     width: 100%;
     height: 100%;
-
+    display: flex;
+    flex-direction: column;
+    position: absolute;
   }
 </style>

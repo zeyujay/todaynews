@@ -19,7 +19,11 @@ body {
     font-size: 14px;
     font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
     font-weight: 200;
-    overflow:hidden
+
+}
+html, body{
+  widows: 100%;
+  height: 100%;
 }
 td, th, caption {
     font-size: 14px;

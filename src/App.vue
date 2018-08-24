@@ -1,14 +1,12 @@
 <template>
-
   <div id="app">
     <transition name="ltor">
-    <router-view/>
-
+      <!-- <keep-alive> -->
+        <router-view/>
+      <!-- </keep-alive> -->
     </transition>
   </div>
-
 </template>
-
 <script>
 import HomePage from './components/homepage/HomePage.vue'
 import WmVideo from './components/wmvideo/WmVideo.vue'
@@ -37,5 +35,7 @@ export default {
 
 <style>
 #app {
+  width: 100%;
+  height: 100%;
 }
 </style>

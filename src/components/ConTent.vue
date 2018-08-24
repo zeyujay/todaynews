@@ -1,13 +1,16 @@
 <template lang="html">
-  <div class="content" :style="{transform:'translate(0,'+scroll+'rem)',
-  transition:'all '+scrollend+'s'}"
-  v-on:touchstart="touchStart($event)"
-  v-on:touchmove="touchMove($event)"
-  v-on:touchend="touchEnd($event)">
-      <div class="itemlist">
-        <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"></News-Item>
-      </div>
-  </div>
+    <!-- <transition-group name="ltor" tag="div" key="item"class="content" :style="{transform:'translate(0,'+scroll+'rem)',
+    transition:'all '+scrollend+'s'}">
+      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"v-if="$store.state.contentType==1"></News-Item>
+      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"
+      v-if="item.contenttype==$store.state.contentType"></News-Item>
+    </transition-group> -->
+    <transition-group name="ltor" tag="div" key="item"class="content" :style="{transform:'translate(0,'+scroll+'rem)',
+    transition:'all '+scrollend+'s'}">
+      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"v-if="$store.state.contentType==1"></News-Item>
+      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"
+      v-if="item.contenttype==$store.state.contentType"></News-Item>
+    </transition-group>
 </template>
 
 <script>
@@ -27,7 +30,7 @@
         startY:0,
         endY:0,
         resultY:0,
-        scroll:-1.3,
+        scroll:0,
         scrollend:0.5,
         moveY:0
       }
@@ -63,7 +66,7 @@
       touchEnd:function(e){
         this.endY=e.changedTouches[0].pageY
         this.resultY=this.startY-this.endY
-        this.scroll=-1.3,
+        this.scroll=0,
         this.$store.commit('changeUpdate','下拉刷新')
 
         this.scrollend=0.5
@@ -73,16 +76,15 @@
   }
 </script>
 <style lang="css">
-.content{
-  width: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  sadsdasdasdasasdasdasd
-  1231231
-  z-index: 999;
-}
-.itemlist{
+  .content{
+    width: 100%;
+    flex: 20;
+    order: 2;
+    overflow-y: scroll;
+    background-color: #fff;
+    /* display: flex;
+    flex-direction: column; */
+    /* position: absolute; */
+  }
 
-}
 </style>

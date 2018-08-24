@@ -10,12 +10,15 @@
 }
 /* 左滑动 */
 .ltor-enter {
+
   transform: translate(100%,0);
 }
 .ltor-enter-active ,.ltor-leave-active{
-  transition: transform 0.3s linear
+
+  transition: transform 3s linear
 }
 .ltor-enter-to{
+
   transform: translate(0,0);
 }
 .ltor-leave{
@@ -33,4 +36,25 @@
 }
 .rtol-enter-to, .rtol-leave{
   transform: translate(100%,0);
+}
+/* 淡进淡出 */
+.close-enter-active, .close-leave-active {
+  transition: opacity 1s;
+}
+.close-enter, .close-leave-to{
+  opacity: 0;
+}
+/* 删除item */
+.del-leave-active {
+  position: absolute;
+}
+.del-enter, .del-leave-to{
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.del-move{
+  transition: all 1s;
+}
+.del-lenter-active,.del-leave-active {
+	transition: all 1s;
 }

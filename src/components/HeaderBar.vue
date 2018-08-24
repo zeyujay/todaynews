@@ -27,7 +27,6 @@
     </button>
   </div>
 
-
 </div>
 </template>
 <script type="text/javascript">
@@ -93,19 +92,20 @@
 </script>
 <style media="screen">
   .header{
-    position: fixed;
-    top:0;
     width: 100%;
-    height: 0.8rem;
+    flex: 1.5;
+    order: 0;
     background-color: rgb(197, 38, 48);
+    overflow: hidden;
     display: flex;
-    align-items: center;
     flex-direction: row-reverse;
+    align-items: center;
+    /* z-index: 1 */
   }
   .search{
     background-color: #fff;
     width: 75%;
-    height: 0.6rem;
+    height: 75%;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -172,4 +172,6 @@
     font-size: 0.35rem;
     color: #fff
   }
+
+
 </style>
