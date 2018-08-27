@@ -5,6 +5,7 @@ const Data = []
 const LabelData = []
 const NewsData = []
 const Search = []
+const WmLabel = []
 for (let i = 2; i <= 62; i++) {
   let label={
     'id':i,
@@ -12,7 +13,14 @@ for (let i = 2; i <= 62; i++) {
   }
   LabelData.push(label)
 }
-for (let i = 0; i < 500; i++) {
+for (let i = 2; i <= 12; i++) {
+  let label={
+    'id':i,
+    'label':Random.cword(2)
+  }
+  WmLabel.push(label)
+}
+for (let i = 0; i < 50; i++) {
   let news = {
     'id':i,
     'title':Random.csentence(20,20),
@@ -22,10 +30,15 @@ for (let i = 0; i < 500; i++) {
     // 'answernum':Random.natural(),
     'sharenum':Random.natural(0,99999999),
     'readnum':Random.natural(0,99999999),
-    'commentnum':Random.natural(0,99999999),
+    'commentnum':Random.natural(0,9999),
     'starnum':Random.natural(0,99999999),
     'type':Random.natural(0,5),
     'contenttype':Random.natural(2,62),
+    'ishot':Random.boolean(),
+    'keywords':[{'keyword':Random.cword(2,5)},
+                {'keyword':Random.cword(2,5)},
+                {'keyword':Random.cword(2,5)}
+                ]
     // 'content':Random.csentence()
   }
   NewsData.push(news)
@@ -42,3 +55,4 @@ Mock.mock('/','post',LabelData)
 Mock.mock('/news','post',NewsData)
 Mock.mock(/news\/id/,'post',NewsData)
 Mock.mock('/search','post',Search)
+Mock.mock('/wmlabel','post',WmLabel)

@@ -3,13 +3,11 @@
   <Header-Bar></Header-Bar>
   <Label-Nav :labelList="labelList" ></Label-Nav>
   <Con-Tent></Con-Tent>
-  <Footer-Bar></Footer-Bar>
 </div>
 </template>
 <script type="text/javascript">
   import HeaderBar from '../HeaderBar.vue'
   import LabelNav from '../LabelNav.vue'
-  import FooterBar from '../FooterBar.vue'
   import ConTent from '../ConTent.vue'
   import api from '../../axios/api'
   export default{
@@ -21,7 +19,6 @@
     },
     components:{
       HeaderBar,
-      FooterBar,
       LabelNav,
       ConTent
     },
@@ -30,8 +27,8 @@
     },
     methods:{
       getLabelList:function(){
-        api.getData('/','').then(res=>{
-          this.labelList = res
+        api.getData('/wmlabel','').then(res=>{
+          this.$store.commit('addWmLabel',res)
         })
       },
     }

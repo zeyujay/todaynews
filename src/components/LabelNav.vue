@@ -1,10 +1,11 @@
 <template id="">
   <div class="labelnav">
     <ul>
-      <li v-for="item in $store.state.activelabel" :style=""
-      @click="$store.state.contentType=item.id">{{item.label}}</li>
+      <li v-for="item in ($route.path=='/'?homelabel:wmlabel)"
+      :style="{color:$store.state.contentType==item.id?'rgb(197, 38, 48)':'black'}"
+      @click="$store.state.contentType=item.id" >{{item.label}}</li>
     </ul>
-    <div class="labelbutton"  @click="changeLabel()">
+    <div class="labelbutton"  @click="changeLabel()" v-show="$route.path=='/'?true:false">
       <i class="iconfont icon-icon-test1"></i>
     </div>
   </div>
@@ -13,8 +14,14 @@
   import api from '../axios/api'
   export default{
     name:'LabelList',
-    props:{labelList:Array},
-
+    computed:{
+      homelabel:function(){
+        return this.$store.state.activelabel
+      },
+      wmlabel:function(){
+        return this.$store.state.wmlabel
+      }
+    },
     methods:{
       getLabelList:function(){
         api.getData('/','').then(res=>{
@@ -52,10 +59,10 @@
     overflow-x: scroll;
   }
   .labelnav li{
-    margin-left: 0.2rem;
+    margin-left: 0.35rem;
     margin-right: 0.2rem;
     white-space: nowrap;
-    font-size: 0.3rem;
+    font-size: 0.25rem;
   }
   .labelbutton{
     /* position: absolute; */

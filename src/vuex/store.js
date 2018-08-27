@@ -9,11 +9,27 @@ export default new Vuex.Store({
     isfoorbar:true,
     searchword:[],
     isShowLabel:false,
-    newslabel:[],
+    homelabel:[],
     activelabel:[{'id':0,'label':'关注'},{'id':1,'label':'推荐'}],
-    contentType:1
+    wmlabel:[{'id':0,'label':'关注'},{'id':1,'label':'推荐'}],
+    contentType:1,
+    isOverlay:false,
+    newslist:[]
   },
   mutations:{
+    removeNews(state,newsid){
+      state.newslist=state.newslist.filter(function(item){
+        if (newsid!=item.id) {
+            return item;
+        }
+      })
+    },
+    addNews(state,newslist){
+      state.newslist=newslist
+    },
+    changeOverlay(state,isOverlay){
+      state.isOverlay=isOverlay
+    },
     changeType(state,changeType){
       state.contentType=changeType
     },
@@ -33,9 +49,14 @@ export default new Vuex.Store({
           }
         })
     },
-    addNewsLabel(state,newslabel){
+    addHomeLabel(state,homelabel){
 
-      state.newslabel=newslabel
+      state.newslabel=homelabel
+    },
+    addWmLabel(state,wmlabel){
+      wmlabel.map(function(item){
+        state.wmlabel.push(item)
+      })
     },
     changeUpdate(state,change){
       state.update=change

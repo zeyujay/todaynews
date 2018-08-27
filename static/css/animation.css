@@ -1,3 +1,13 @@
+/* uptobottom */
+.stol-enter ,.stol-leave-to{
+  height: 0;
+}
+.stol-enter-active ,.stol-leave-active{
+  transition: height 3s linear
+}
+.stol-enter-to, .stol-leave{
+  height: 3rem;
+}
 /* 上下滑动 */
 .btot-enter ,.btot-leave-to{
   transform: translate(0,100%);
@@ -6,26 +16,35 @@
   transition: transform 0.3s linear
 }
 .btot-enter-to, .btot-leave{
+
   transform: translate(0,0);
 }
-/* 左滑动 */
-.ltor-enter {
+/* deleteitem */
+/* .del-leave-active,.del-enter-active{
 
-  transform: translate(100%,0);
+  transition: all .3s linear
+}
+.del-leave,.del-enter-to{
+  opacity: 1;
+  transform: translateX(0);
+}
+.del-leave-to{
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.del-enter{
+  opacity: 0;
+  transform: translateX(100%);
+} */
+/* 左滑动 */
+.ltor-enter ,.ltor-leave-to{
+  transform: translate(0,0);
 }
 .ltor-enter-active ,.ltor-leave-active{
-
-  transition: transform 3s linear
+  transition: transform 0.3s linear
 }
-.ltor-enter-to{
-
-  transform: translate(0,0);
-}
-.ltor-leave{
-  transform: translate(0,0);
-}
-.ltor-leave-to{
-  transform: translate(-100%,0);
+.ltor-enter-to, .ltor-leave{
+  transform: translate(100%,0);
 }
 /* 右滑动 */
 .rtol-enter ,.rtol-leave-to{

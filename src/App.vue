@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <transition name="ltor">
+    <!-- <transition name="ltor"> -->
       <!-- <keep-alive> -->
         <router-view/>
       <!-- </keep-alive> -->
-    </transition>
+    <!-- </transition> -->
+      <Footer-Bar></Footer-Bar>
   </div>
 </template>
 <script>

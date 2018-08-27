@@ -3,10 +3,9 @@
       <Header-Bar></Header-Bar>
       <Label-Nav :labelList="labelList" ></Label-Nav>
       <!-- <Update-Plugin></Update-Plugin> -->
-      <Con-Tent :contentList="newsList"></Con-Tent>
-      <Footer-Bar></Footer-Bar>
+      <Con-Tent></Con-Tent>
+      <!-- <Footer-Bar></Footer-Bar> -->
       <Label-List></Label-List>
-
     </div>
 </template>
 <script type="text/javascript">
@@ -14,7 +13,6 @@
   import HeaderBar from '../HeaderBar.vue'
   import LabelNav from '../LabelNav.vue'
   import ConTent from '../ConTent.vue'
-  import FooterBar from '../FooterBar.vue'
   import LabelList from '../LabelList.vue'
   import UpdatePlugin from '../UpdatePlugin.vue'
   export default{
@@ -23,14 +21,13 @@
       HeaderBar,
       LabelNav,
       ConTent,
-      FooterBar,
       LabelList,
-      UpdatePlugin
+      UpdatePlugin,
     },
     data(){
       return {
         labelList:[],
-        newsList:[],
+        show:true
       }
     },
     created:function(){
@@ -41,12 +38,12 @@
     methods:{
       getLabelList:function(){
         api.getData('/','').then(res=>{
-          this.$store.commit('addNewsLabel',res)
+          this.$store.commit('addHomeLabel',res)
         })
       },
       getNewsList:function(){
         api.getData('/news','').then(res=>{
-          this.newsList = res
+          this.$store.commit('addNews',res)
         })
       },
 

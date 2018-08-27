@@ -1,9 +1,23 @@
 <template id="">
 <div class="header">
-  <div class="upload" v-show="$route.path=='/search'?false:true">
+  <div class="overlay"v-show="show" @click="show=!show">
+  </div>
+  <transition name="close">
+    <div class="sifang"v-show="show">
+      <ul>
+        <li @click=""><i class="iconfont icon-tuwentag"></i><span>发图文</span></li>
+        <li><i class="iconfont icon-shipin"></i><span>拍小视频</span></li>
+        <li><i class="iconfont icon-videobluxiang"></i><span>上传视频</span></li>
+        <li><i class="iconfont icon-tiwen"></i><span>提问</span></li>
+      </ul>
+    </div>
+  </transition>
+
+  <div class="upload" v-show="$route.path=='/search'?false:true"@click="show=!show">
     <i id="iupload" class="icon-camera-b iconfont"></i><br>
     <span>发布</span>
   </div>
+
   <div class="sousuo" v-show="$route.path=='/search'?true:false">
     <i>搜索</i>
   </div>
@@ -16,7 +30,6 @@
       v-for="word in changeword">
         <li v-for="item in word" :style="{'border-right':item.id%3==2?'0':'1px solid #000'}">{{item.label}}</li>
       </ul>
-
     </label>
   </div>
 
@@ -37,10 +50,11 @@
       return {
         searchword:[],
         placeholder:'',
-        change:0,
+        change:-0.6,
         changeword:[],
         changetime:1,
-        upordown:true
+        upordown:true,
+        show:false
       }
     },
     created(){
@@ -70,7 +84,7 @@
               self.change+=-0.6
             }
           }
-        },20000)
+        },1000)
       },
       clicksearch:function(){
         this.$router.push({name:'Search'})
@@ -96,10 +110,11 @@
     flex: 1.5;
     order: 0;
     background-color: rgb(197, 38, 48);
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    position: relative;
     /* z-index: 1 */
   }
   .search{
@@ -153,6 +168,61 @@
     height: 0.6rem;
     width: 0.8rem;
     color: #fff
+  }
+  .overlay{
+    position: fixed;
+
+    width: 100%;
+    height: 200%;
+    background-color:rgba(255, 255, 255, 0);
+    z-index: 9;
+  }
+  .sifang{
+    width: 2rem;
+    height: 2.4rem;
+    right: 0.08rem;
+    bottom: -2.7rem;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(17, 17, 17);
+    border-radius: 5px;
+    color: #fff;
+
+  }
+  .sifang ul{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .sifang ul li{
+    flex:1;
+    padding: 0rem 0.2rem;
+    box-shadow: inset 0px -1px 1px -1px #c8c7cc;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* font-size: 0.1rem; */
+  }
+  .sifang ul li i{
+    /* margin-right: 0.4rem; */
+    flex: 1;
+    font-size: 0.3rem;
+  }
+  .sifang ul li span{
+    /* display: inline-block; */
+    flex: 1.5;
+    text-align: left;
+  }
+  .sifang:before{
+    width:0px;
+    height:0px;
+    border: 0.15rem transparent solid ;
+    border-bottom-color: #000;
+    position:absolute;
+    bottom:99%;
+    right:0.25rem;
+    content:""
   }
   .sousuo{
     width: 20%;

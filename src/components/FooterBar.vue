@@ -17,7 +17,7 @@
                   {id:1,label:'西瓜视频',page:'WmVideo',icon:'bofangkongxin'},
                   {id:2,label:'找人',page:'FindPerson',icon:'icon-p_lianxirenguanli'},
                   {id:3,label:'小视频',page:'SmallVideo',icon:'huo'},
-                  {id:4,label:'我的',page:'MyPage',icon:'daohanglan-05'}],
+                  {id:4,label:'未登录',page:'MyPage',icon:'daohanglan-05'}],
         isActive:false,
 
       }
@@ -29,9 +29,10 @@
 </script>
 <style media="screen">
   .footer {
+    position: fixed;
+    bottom: 0;
+    height: 1rem;
     width: 100%;
-    flex:1.5;
-    order: 99;
     background-color: rgb(242, 243, 245);
     overflow: hidden;
     display: flex;

@@ -1,16 +1,20 @@
 <template lang="html">
-    <!-- <transition-group name="ltor" tag="div" key="item"class="content" :style="{transform:'translate(0,'+scroll+'rem)',
-    transition:'all '+scrollend+'s'}">
-      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"v-if="$store.state.contentType==1"></News-Item>
-      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"
-      v-if="item.contenttype==$store.state.contentType"></News-Item>
-    </transition-group> -->
-    <transition-group name="ltor" tag="div" key="item"class="content" :style="{transform:'translate(0,'+scroll+'rem)',
-    transition:'all '+scrollend+'s'}">
-      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"v-if="$store.state.contentType==1"></News-Item>
-      <News-Item v-for="(item,key) in contentList" :newsitem="item" :key="key"
+  <div  class="content">
+    <transition-group tag="div" key="item" v-if="$route.path=='/'">
+      <News-Item v-for="(item,key) in this.$store.state.newslist"
+      :newsitem="item" :key="item.id"v-if="$store.state.contentType==1"></News-Item>
+      <News-Item v-for="(item,key) in this.$store.state.newslist"
+      :newsitem="item" :key="item.id"
       v-if="item.contenttype==$store.state.contentType"></News-Item>
     </transition-group>
+    <transition-group tag="div" key="item"v-if="$route.path=='/wnvideo'">
+      qwqw
+    </transition-group>
+  </div>
+
+
+    <!-- :style="{transform:'translate(0,'+scroll+'rem)',
+    transition:'all '+scrollend+'s'}" -->
 </template>
 
 <script>
@@ -82,9 +86,10 @@
     order: 2;
     overflow-y: scroll;
     background-color: #fff;
-    /* display: flex;
-    flex-direction: column; */
-    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
+
 
 </style>
