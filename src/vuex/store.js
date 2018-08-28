@@ -14,9 +14,17 @@ export default new Vuex.Store({
     wmlabel:[{'id':0,'label':'关注'},{'id':1,'label':'推荐'}],
     contentType:1,
     isOverlay:false,
-    newslist:[]
+    newslist:[],
+    usertype:[],
+    users:[]
   },
   mutations:{
+    addUsers(state,users){
+      state.users=users
+    },
+    addUsertype(state,usertype){
+      state.usertype=usertype
+    },
     removeNews(state,newsid){
       state.newslist=state.newslist.filter(function(item){
         if (newsid!=item.id) {

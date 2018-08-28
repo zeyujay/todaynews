@@ -43,11 +43,12 @@
   }
   .footer li{
     text-align: center;
-    flex: 1
+    flex: 1;
+    font-size: 0.1rem;
   }
   .footerLi i{
 
-    font-size: 0.3rem;
+    font-size: 0.5rem;
   }
   a:link{
     color: #000

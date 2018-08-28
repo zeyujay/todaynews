@@ -6,6 +6,31 @@ const LabelData = []
 const NewsData = []
 const Search = []
 const WmLabel = []
+const users = []
+const usertype = []
+
+for (let i = 0; i < 500; i++) {
+  let user = {
+    'id':i,
+    'jieshao':Random.csentence(2,15),
+    'name':'@cname',
+    'touxiangurl':Random.image('320x250', '#ffcc33', '#FFF', 'png', 'qqq'),
+    'fensinum':Random.natural(0,99999999),
+    'smalltype':Random.natural(0,19),
+    'type':Random.natural(0,31),
+  }
+  users.push(user)
+
+}
+for (let i = 0; i < 32; i++) {
+  let type = {
+    'id':i,
+    'name':Random.cword(2),
+    'smalltype|19':[{'id|+1':0,'type':'@cword(2,5)'}]
+  }
+  usertype.push(type)
+}
+
 for (let i = 2; i <= 62; i++) {
   let label={
     'id':i,
@@ -51,8 +76,11 @@ for (let i = 0; i < 20; i++) {
   }
   Search.push(searchword)
 }
+
 Mock.mock('/','post',LabelData)
 Mock.mock('/news','post',NewsData)
 Mock.mock(/news\/id/,'post',NewsData)
 Mock.mock('/search','post',Search)
 Mock.mock('/wmlabel','post',WmLabel)
+Mock.mock('/usertype','post',usertype)
+Mock.mock('/users','post',users)
