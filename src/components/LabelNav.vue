@@ -1,5 +1,5 @@
 <template id="">
-  <div class="labelnav">
+  <div class="labelnav scale-1px">
     <ul>
       <li v-for="item in ($route.path=='/'?homelabel:wmlabel)"
       :style="{color:$store.state.contentType==item.id?'rgb(197, 38, 48)':'black'}"
@@ -29,6 +29,7 @@
         })
       },
       changeLabel:function(){
+        console.log("qw");
         this.$store.commit('changeLabel',true)
 
       }
@@ -38,16 +39,13 @@
 </script>
 <style media="screen">
   .labelnav{
-    height: 100%;
-    width: 100%;
-    flex: 1.1;
-    order: 1;
     background-color: #fff;
     overflow-y: hidden;
-
-    box-shadow: inset 0px -1px 1px -1px #c8c7cc;
-    position:relative;
-    /* display: flex; */
+    position:fixed;
+    top: 170px;
+    height: 120px;
+    z-index: 5;
+    width: 100%;
   }
   .labelnav ul{
     height: 100%;
@@ -57,24 +55,21 @@
     -webkit-overflow-scrolling:touch;
     align-items: center;
     overflow-x: scroll;
+    margin-left: 50px;
   }
   .labelnav li{
-    margin-left: 0.35rem;
-    margin-right: 0.2rem;
     white-space: nowrap;
-    font-size: 0.25rem;
+    font-size: 50px;
+    margin-right: 50px;
   }
   .labelbutton{
-    /* position: absolute; */
     position: absolute;
-    height: 99%;
+    height: 120px;
     right: 0;
     top: 0;
-    /* z-index: 100; */
     text-align: center;
     box-shadow: -7px 0px 15px -1px rgba(238, 239, 243);
-    width: 0.8rem;
-
+    width: 160px;
     background: -webkit-linear-gradient(right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
     background: -o-linear-gradient(right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
     background: -moz-linear-gradient(right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
@@ -82,8 +77,9 @@
 
   }
   .labelbutton i{
+    font-size: 50px;
+    line-height: 120px;
 
-line-height: 200%;
   }
 
 </style>

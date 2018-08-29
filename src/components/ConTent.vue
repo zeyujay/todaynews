@@ -82,13 +82,11 @@
 <style lang="css">
   .content{
     width: 100%;
-    flex: 20;
-    order: 2;
-    overflow-y: scroll;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    height: auto;
+    padding: 0 52px;
+    margin-top: 290px;
   }
 
 

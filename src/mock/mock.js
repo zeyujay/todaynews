@@ -48,7 +48,7 @@ for (let i = 2; i <= 12; i++) {
 for (let i = 0; i < 50; i++) {
   let news = {
     'id':i,
-    'title':Random.csentence(20,20),
+    'title':Random.csentence(20,30),
     'author':Random.cword(2,10),
     // 'date':Random.date(),
     'imgurl|0-3':[{'url':Random.image('320x250', '#ffcc33', '#FFF', 'png', 'qqq')}],

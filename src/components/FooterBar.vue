@@ -1,9 +1,9 @@
 <template id="">
   <ul class="footer">
     <li v-for="item in footerBar">
-        <router-link :to="{name:item.page}">
+        <router-link :to="{name:item.page}" class="link">
           <i :class="'iconfont icon-'+item.icon"></i>
-          <br>{{item.label}}
+          <span>{{item.label}}</span>
         </router-link>
     </li>
   </ul>
@@ -31,24 +31,27 @@
   .footer {
     position: fixed;
     bottom: 0;
-    height: 1rem;
+    height: 150px;
     width: 100%;
-    background-color: rgb(242, 243, 245);
+    background-color: rgb(240, 242, 245);
     overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    /* flex-wrap: nowrap; */
+    color: rgb(63, 63, 63);
   }
   .footer li{
     text-align: center;
     flex: 1;
-    font-size: 0.1rem;
+    font-size: 32px;
   }
-  .footerLi i{
-
-    font-size: 0.5rem;
+  .link{
+    display: flex;
+    flex-direction: column;
+  }
+  .link i{
+    font-size: 72px;
   }
   a:link{
     color: #000

@@ -26,11 +26,6 @@ export default {
     FooterBar
 
   }
-  /*<Home-Page></Home-Page>
-  <Wm-Video></Wm-Video>
-  <Find-Person></Find-Person>
-  <Small-Video></Small-Video>
-  <My-Page></My-Page>*/
 }
 </script>
 
@@ -38,5 +33,6 @@ export default {
 #app {
   width: 100%;
   height: 100%;
+  /* position: relative; */
 }
 </style>
