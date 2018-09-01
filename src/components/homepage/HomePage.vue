@@ -1,27 +1,22 @@
 <template id="">
     <div class="home">
       <Header-Bar></Header-Bar>
-      <Label-Nav :labelList="labelList" ></Label-Nav>
-      <!-- <Update-Plugin></Update-Plugin> -->
-      <Con-Tent></Con-Tent>
-      <!-- <Footer-Bar></Footer-Bar> -->
-      <Label-List></Label-List>
+      <Label-Nav></Label-Nav>
+      <News-List></News-List>
     </div>
 </template>
 <script type="text/javascript">
   import api from "../../axios/api"
   import HeaderBar from '../HeaderBar.vue'
   import LabelNav from '../LabelNav.vue'
-  import ConTent from '../ConTent.vue'
-  import LabelList from '../LabelList.vue'
+  import NewsList from './NewsList.vue'
   import UpdatePlugin from '../UpdatePlugin.vue'
   export default{
     name:'HomePage',
     components:{
       HeaderBar,
       LabelNav,
-      ConTent,
-      LabelList,
+      NewsList,
       UpdatePlugin,
     },
     data(){
@@ -37,13 +32,13 @@
     },
     methods:{
       getLabelList:function(){
-        api.getData('/','').then(res=>{
+        api.getData('/labellist','').then(res=>{
           this.$store.commit('addHomeLabel',res)
         })
       },
       getNewsList:function(){
-        api.getData('/news','').then(res=>{
-          this.$store.commit('addNews',res)
+        api.getData('/newslist','').then(res=>{
+          this.$store.commit('addNewsList',res)
         })
       },
 
@@ -54,6 +49,7 @@
   .home{
     width: 100%;
     height: 100%;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
   }
 </style>

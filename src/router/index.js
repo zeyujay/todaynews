@@ -7,7 +7,7 @@ import SmallVideo from '@/components/smallvideo/SmallVideo'
 import MyPage from '@/components/my/MyPage'
 import ArticleItem from '@/components/ArticleItem'
 import Search from '@/components/Search'
-
+import LabelList from '@/components/homepage/LabelList'
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +48,11 @@ export default new Router({
       path:'/search',
       name:'Search',
       component:Search
-    }
+    },
+    {
+      path:'/labellist',
+      name:'LabelList',
+      component:LabelList
+    },
   ]
 })

@@ -58,12 +58,9 @@ for (let i = 0; i < 50; i++) {
     'commentnum':Random.natural(0,9999),
     'starnum':Random.natural(0,99999999),
     'type':Random.natural(0,5),
-    'contenttype':Random.natural(2,62),
+    'newstype':Random.natural(2,62),
     'ishot':Random.boolean(),
-    'keywords':[{'keyword':Random.cword(2,5)},
-                {'keyword':Random.cword(2,5)},
-                {'keyword':Random.cword(2,5)}
-                ]
+    'keywords|1-3':['@cword(2,5)']
     // 'content':Random.csentence()
   }
   NewsData.push(news)
@@ -77,8 +74,8 @@ for (let i = 0; i < 20; i++) {
   Search.push(searchword)
 }
 
-Mock.mock('/','post',LabelData)
-Mock.mock('/news','post',NewsData)
+Mock.mock('/labellist','post',LabelData)
+Mock.mock('/newslist','post',NewsData)
 Mock.mock(/news\/id/,'post',NewsData)
 Mock.mock('/search','post',Search)
 Mock.mock('/wmlabel','post',WmLabel)

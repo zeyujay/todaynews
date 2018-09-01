@@ -2,12 +2,16 @@
   <div class="labelnav scale-1px">
     <ul>
       <li v-for="item in ($route.path=='/'?homelabel:wmlabel)"
-      :style="{color:$store.state.contentType==item.id?'rgb(197, 38, 48)':'black'}"
-      @click="$store.state.contentType=item.id" >{{item.label}}</li>
+      :style="{color:$store.state.newsType==item.id?'rgb(197, 38, 48)':'black'}"
+      @click="$store.state.newsType=item.id" >{{item.label}}
+      </li>
     </ul>
-    <div class="labelbutton"  @click="changeLabel()" v-show="$route.path=='/'?true:false">
+    <!-- <div class="labelbutton"  @click="changeLabel()" v-show="$route.path=='/'?true:false">
       <i class="iconfont icon-icon-test1"></i>
-    </div>
+    </div> -->
+    <router-link :to="{ name: 'LabelList'}"class="labelbutton"v-show="$route.path=='/'?true:false">
+      <i class="iconfont icon-icon-test1"></i>
+    </router-link>
   </div>
 </template>
 <script type="text/javascript">
@@ -29,7 +33,6 @@
         })
       },
       changeLabel:function(){
-        console.log("qw");
         this.$store.commit('changeLabel',true)
 
       }
@@ -74,12 +77,12 @@
     background: -o-linear-gradient(right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
     background: -moz-linear-gradient(right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
-
+    line-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .labelbutton i{
     font-size: 50px;
-    line-height: 120px;
-
   }
-
 </style>

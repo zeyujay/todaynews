@@ -58,7 +58,7 @@
 }
 /* 淡进淡出 */
 .close-enter-active, .close-leave-active {
-  transition: opacity 1s;
+  transition: opacity 0.3s;
 }
 .close-enter, .close-leave-to{
   opacity: 0;

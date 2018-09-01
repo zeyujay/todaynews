@@ -1,30 +1,35 @@
 <template lang="html">
   <transition name="btot">
-    <!-- <div class="labellist" v-show="$store.state.isShowLabel"> -->
-    <div class="labellist" v-show="true">
-      <div class="close"  style="padding-left:2%">
+    <div class="labellist"@touchmove.prevent>
+      <div class="close">
         <i class="iconfont icon-cuohao"@click="changeLabel()"></i>
       </div>
       <div class="toplabel">
-        <strong>我的频道</strong>
-        <span>点击进入频道</span>
+        <div class="">
+          <strong>我的频道</strong>
+          <span>点击进入频道</span>
+        </div>
+
         <button id="edit"type="button" name="button" @click="show=!show">
           <div v-show="!show">编辑</div><div v-show="show">完成</div>
         </button>
       </div>
-        <transition-group name="del" tag="ul" class="activelabel">
-            <li v-for="item in $store.state.activelabel" :key="item.id"><span @click="toLabel(item.id)">{{item.label}}</span>
+        <ul class="activelabel">
+            <li v-for="(item,key) in $store.state.activelabel" :style="{color:item.id<2?(item.id==1?'rgb(240, 66, 73)':'rgb(135, 135, 135)'):'black'}"
+            :key="key"><span @click="toLabel(item.id)">{{item.label}}</span>
               <transition name="close">
                 <div class="closelabel" @click="$store.commit('deletelabel',item)"v-show="show" v-if="item.id>1">
-                  <i class="iconfont icon-guanbi" ></i>
+                  <i class="iconfont icon-guanbi guanbi" ></i>
                 </div>
               </transition>
             </li>
-        </transition-group>
+        </ul>
 
       <div class="toplabel">
-        <strong>频道推荐</strong>
-        <span>点击添加频道</span>
+        <div class="">
+          <strong>频道推荐</strong>
+          <span>点击添加频道</span>
+        </div>
       </div>
       <ul class="addlabel">
         <li v-for="item in $store.state.newslabel"
@@ -48,29 +53,37 @@
         this.$store.commit('changeType',labelid)
       },
       addActiveLabel(item){
-        this.$store.commit('addActiveLabel',item)
+        let that=this
+        that.$store.commit('addActiveLabel',item)
       },
       changeLabel:function(){
         this.$store.commit('changeLabel',false)
         this.show=false
+        this.$router.go(-1)
       }
     }
   }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
   .labellist{
     background-color: #fff;
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 999;
-    padding-top: 90px;
+    z-index: 10;
+    padding-top: 45px;
     overflow-y: scroll;
     top: 0;
   }
+  .close{
+    margin-left: 36px;
+  }
   .toplabel{
     padding: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .toplabel strong{
     font-size: 55px;
@@ -80,15 +93,13 @@
     font-size: 40px;
   }
   #edit{
-    float: right;
-    border: 2px solid rgb(197, 38, 48);
+    border: 2px solid rgb(240, 66, 73);
     background-color: #fff;
-    border-radius: 8px;
-    color: rgb(197, 38, 48);
+    border-radius: 40px;
+    color: rgb(240, 66, 73);
     outline:none;
     width: 165px;
     height: 78px;
-    font-weight: 200;
     font-size: 45px;
   }
   .activelabel{
@@ -102,7 +113,7 @@
     flex: 0 0 315px;
     height: 140px;
     text-align: center;
-    background-color: rgb(242, 243, 245);
+    background-color: rgb(240, 242, 245);
     line-height: 140px;
     border-radius: 5px;
     display: inline-block;
@@ -111,18 +122,16 @@
     font-size: 50px;
   }
   .closelabel{
-    width: 100%;
-    height: 100%;
+    width: 315px;
+    height: 140px;
     position: absolute;
     z-index: 2;
     top: 0;
   }
-  .activelabel i{
+  .closelabel i{
     position: absolute;
-    width: 16px;
-    height: 16px;
-    top: -50%;
-    right: 0;
+    top: -62px;
+    right: -16px;
     color: rgb(190, 190, 190);
   }
   .addlabel{

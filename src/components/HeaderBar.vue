@@ -1,6 +1,6 @@
 <template id="">
 <div class="header">
-  <div class="overlay"v-show="show" @click="show=!show">
+  <div class="overlay"v-show="show" @click="show=!show" @touchmove.prevent>
   </div>
   <transition name="close">
     <div class="sifang"v-show="show">
@@ -12,7 +12,6 @@
       </ul>
     </div>
   </transition>
-
   <div class="upload" v-show="$route.path=='/search'?false:true"@click="show=!show">
     <i id="iupload" class="icon-camera-b iconfont"></i>
     <span>发布</span>
@@ -52,7 +51,7 @@
       return {
         searchword:[],
         placeholder:'',
-        change:-0.6,
+        change:0,
         changeword:[],
         changetime:1,
         upordown:true,
@@ -64,29 +63,25 @@
       this.changeWord()
     },
     methods:{
-
       changeWord:function(){
-        let self = this
-
+        let that = this
         setInterval(function(){
-          if (self.upordown==true) {
-
-            if (self.change>-0.6*(self.changeword.length-1)) {
-              self.change+=-0.6
-
+          if (that.upordown==true) {
+            if (that.change>-13*(that.changeword.length-1)/10) {
+              that.change=(that.change*10-13)/10
             }else {
-              self.upordown=false
-              self.change+=0.6
+              that.upordown=false
+              that.change=(that.change*10+13)/10
             }
           }else {
-            if (self.change<0) {
-              self.change+=0.6
+            if (that.change<0) {
+              that.change=(that.change*10+13)/10
             }else {
-              self.upordown=true
-              self.change+=-0.6
+              that.upordown=true
+              that.change=(that.change*10-13)/10
             }
           }
-        },1000)
+        },10000)
       },
       clicksearch:function(){
         this.$router.push({name:'Search'})
@@ -115,7 +110,7 @@
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 6;
     background-color: rgb(197, 38, 48);
   }
   .upload{
@@ -152,29 +147,31 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
-    height: 100%;
+    height: 130px;
     font-size: 52px;
-
+    display: flex;
+    flex-direction: column;
   }
   .placeholder ul{
-    width: 100%;
-    height: 100%;
+    height: 130px;
     transition: transform 1s;
-    float: left;
+    line-height: 90px;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   .placeholder li{
-    float: left;
     text-align: center;
     border-right: 1px solid #000;
     padding: 0 20px;
-
   }
+/* upload发布 */
   .overlay{
     position: fixed;
-
     width: 100%;
-    height: 200%;
+    height: 100%;
     background-color:rgba(255, 255, 255, 0);
     z-index: 9;
   }
@@ -235,7 +232,7 @@
     height: 100%;
     font-size: 0.5rem
   }
-
+/* upload */
 
 </style>
 .header{

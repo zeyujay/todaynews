@@ -8,7 +8,6 @@
 <script type="text/javascript">
   import HeaderBar from '../HeaderBar.vue'
   import LabelNav from '../LabelNav.vue'
-  import ConTent from '../ConTent.vue'
   import api from '../../axios/api'
   export default{
     name:'WmVideo',
@@ -19,8 +18,7 @@
     },
     components:{
       HeaderBar,
-      LabelNav,
-      ConTent
+      LabelNav
     },
     created(){
       this.getLabelList()

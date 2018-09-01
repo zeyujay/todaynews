@@ -19,14 +19,5 @@
 </script>
 
 <style lang="css">
-.pulldown{
-  width: 100%;
-  height: 1.3rem;
-  text-align: center;
-  background-color:rgba(242 , 243, 245, 1);
-  padding-top: 1.0rem;
-  display: inline-block;
-  position: absolute;
-  z-index: -1;
-}
+
 </style>
