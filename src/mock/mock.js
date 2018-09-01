@@ -3,7 +3,6 @@ import Mock from 'mockjs'
 const Random = Mock.Random
 const Data = []
 const LabelData = []
-const NewsData = []
 const Search = []
 const WmLabel = []
 const users = []
@@ -45,27 +44,62 @@ for (let i = 2; i <= 12; i++) {
   }
   WmLabel.push(label)
 }
-for (let i = 0; i < 50; i++) {
-  let news = {
-    'id':i,
-    'title':Random.csentence(20,30),
-    'author':Random.cword(2,10),
-    // 'date':Random.date(),
-    'imgurl|0-3':[{'url':Random.image('320x250', '#ffcc33', '#FFF', 'png', 'qqq')}],
-    // 'answernum':Random.natural(),
-    'sharenum':Random.natural(0,99999999),
-    'readnum':Random.natural(0,99999999),
-    'commentnum':Random.natural(0,9999),
-    'starnum':Random.natural(0,99999999),
-    'type':Random.natural(0,5),
-    'newstype':Random.natural(2,62),
-    'ishot':Random.boolean(),
+// for (let i = 0; i < 50; i++) {
+//   let news = {
+//     'id':'@guid',
+//     'title':Random.csentence(20,30),
+//     'author':Random.cword(2,10),
+//     // 'date':Random.date(),
+//     'imgurl|0-3':[{'url':Random.image('320x250', '#ffcc33', '#FFF', 'png', 'qqq')}],
+//     // 'answernum':Random.natural(),
+//     'sharenum':Random.natural(0,99999999),
+//     'readnum':Random.natural(0,99999999),
+//     'commentnum':Random.natural(0,9999),
+//     'starnum':Random.natural(0,99999999),
+//     'type':Random.natural(0,5),
+//     'newstype':Random.natural(2,62),
+//     'ishot':Random.boolean(),
+//     'keywords|1-3':['@cword(2,5)']
+//     // 'content':Random.csentence()
+//   }
+//   NewsData.push(news)
+// }
+let NewsData={'newsdata|10-20':[
+  {
+    'id':'@guid',
+    'title':'@csentence(20,30)',
+    'author':'@cword(2,10)',
+    'imgurl|0-3':[{'url':"@image('320x250', '#ffcc33', '#FFF', 'png', 'qqq')"}],
+    'sharenum':'@natural(0,99999999)',
+    'readnum':'@natural(0,99999999)',
+    'commentnum':'@natural(0,9999)',
+    'starnum':'@natural(0,99999999)',
+    'type':'@natural(0,5)',
+    'newstype':'@natural(2,62)',
+    'ishot':'@boolean()',
     'keywords|1-3':['@cword(2,5)']
-    // 'content':Random.csentence()
   }
-  NewsData.push(news)
-
-}
+]}
+// for (let i = 0; i < 50; i++) {
+//   let news = {
+//     'id':'@guid',
+//     'title':Random.csentence(20,30),
+//     'author':Random.cword(2,10),
+//     // 'date':Random.date(),
+//     'imgurl|0-3':[{'url':Random.image('320x250', '#ffcc33', '#FFF', 'png', 'qqq')}],
+//     // 'answernum':Random.natural(),
+//     'sharenum':Random.natural(0,99999999),
+//     'readnum':Random.natural(0,99999999),
+//     'commentnum':Random.natural(0,9999),
+//     'starnum':Random.natural(0,99999999),
+//     'type':Random.natural(0,5),
+//     'newstype':Random.natural(2,62),
+//     'ishot':Random.boolean(),
+//     'keywords|1-3':['@cword(2,5)']
+//     // 'content':Random.csentence()
+//   }
+//   NewsData.push(news)
+// }
 for (let i = 0; i < 20; i++) {
   let searchword={
     'id':i,

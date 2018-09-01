@@ -1,11 +1,14 @@
 <template lang="html">
   <div class="homelist"@touchstart="touchStart($event)"
   @touchmove="touchMove($event)"
-  @touchend="touchEnd($event)":style="{transform:'translateY('+scroll+'px)',transition:'all '+scrollend+'s'}">
+  @touchend="touchEnd($event)":style="{transform:'translate3d(0,'+scroll+'px,0)',transition:'all '+scrollend+'s'}">
     <div class="pulldown">
       <span>{{$store.state.update}}</span>
     </div>
-    <ul>
+    <div class="updateinfo">
+      dsdsd
+    </div>
+    <ul id='newsul'>
       <li class="item scale-1px" v-for="(item,key) in newstype===1?newsList:newsFilter(newstype)" :key='key'>
 
           <div class="title" :class="[item.imgurl.length==1?'shorttitle':'longtitle']">
@@ -108,9 +111,15 @@
 </template>
 
 <script>
+  import api from '../../axios/api'
   export default {
     created(){
       this.scroll*=this.scale
+    },
+    mounted(){
+      this.ultop=document.getElementById('newsul').getBoundingClientRect().top
+      this.ulbottom=document.getElementById('newsul').getBoundingClientRect().bottom
+      console.log(this.ultop+'+'+this.ulbottom);
     },
     computed:{
       newstype(){
@@ -122,8 +131,6 @@
     },
     data(){
       return{
-        scale:document.documentElement.clientWidth / 1440,
-        xiangsubi:0,
         tucao:'',
         isShowTucao:false,
         isShowDefault:true,
@@ -132,12 +139,17 @@
         show:false,
         closedialog:0,
         currentitem:{},
+        scale:document.documentElement.clientWidth / 1440,
+        ultop:0,
+        ulbottom:0,
         startY:0,
         endY:0,
         resultY:0,
         scroll:-710,
         scrollend:0.1,
         moveY:0,
+        ispulldown:false,
+        ispullup:false,
         closeY:0,
         fankui:[{id:0,title:'低俗色情'},{id:1,title:'标题党'},{id:2,title:'内容不符'},{id:3,title:'旧闻重复'},{id:4,title:'垃圾内容'}]
       }
@@ -167,24 +179,28 @@
         }
       },
       touchStart:function(e){
-        // e.preventDefault()
+
+        let moveul=document.getElementById('newsul').getBoundingClientRect().top
+        if (this.ultop===moveul) {
+          this.ispulldown=true
+        }
+        // console.log(moveul,this.ultop);
         this.startY=e.touches[0].pageY
         if (this.scrollend!=0) {
           this.scrollend=0
         }
       },
       touchMove:function(e){
-
         let diff=e.touches[0].pageY-this.moveY
         let height = e.touches[0].pageY-this.startY
-        // let v = diff/100/(e.view.innerWidth*window.devicePixelRatio/1440)*2
         let v=diff/window.devicePixelRatio
-        console.log(v);
-        if (diff>0) {
+        console.log(this.ulbottom);
+        if (diff>0&&this.ispulldown===true) {
+          // console.log("xiala");
           let b=this.scroll+v
           if (height>20) {
             if (b<280*this.scale) {
-              if (b>-350*this.scale) {
+              if (b>-300*this.scale) {
                 if (this.$store.state.update==='下拉刷新') {
                   this.$store.commit('changeUpdate','松开刷新')
                 }
@@ -196,11 +212,17 @@
         this.moveY=e.touches[0].pageY
       },
       touchEnd:function(e){
+        if (this.$store.state.update==="松开刷新") {
+          api.getData('/newslist','').then(res=>{
+            this.$store.commit('addNewsList',res.newsdata)
+          })
+        }
         this.endY=e.changedTouches[0].pageY
         this.resultY=this.startY-this.endY
         this.scroll=-710*this.scale,
         this.$store.commit('changeUpdate','下拉刷新')
         this.scrollend=0.5
+        this.ispulldown=false
       }
     }
 
@@ -212,7 +234,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-
     height: 100%
   }
   .pulldown{
@@ -222,6 +243,17 @@
     padding-top: 940px;
     background-color:rgba(242 , 243, 245, 1);
     font-size: 50px;
+  }
+  .updateinfo{
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+    width: 100%;
+    height: 200px;
+    background-color: #523652;
+  }
+  #newsul{
+
   }
   .homelist ul{
     /* padding-top: 290px; */

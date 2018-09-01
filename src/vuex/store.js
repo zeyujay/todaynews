@@ -33,7 +33,7 @@ export default new Vuex.Store({
       })
     },
     addNewsList(state,newsList){
-      state.newsList=newsList
+      state.newsList=[...newsList,...state.newsList]
     },
     changeOverlay(state,isOverlay){
       state.isOverlay=isOverlay

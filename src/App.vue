@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- <transition name="ltor"> -->
-      <keep-alive>
+      <!-- <keep-alive> -->
         <router-view/>
-      </keep-alive>
+      <!-- </keep-alive> -->
     <!-- </transition> -->
       <Footer-Bar></Footer-Bar>
   </div>

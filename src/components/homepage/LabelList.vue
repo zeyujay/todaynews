@@ -1,6 +1,6 @@
 <template lang="html">
   <transition name="btot">
-    <div class="labellist"@touchmove.prevent>
+    <div class="labellist">
       <div class="close">
         <i class="iconfont icon-cuohao"@click="changeLabel()"></i>
       </div>

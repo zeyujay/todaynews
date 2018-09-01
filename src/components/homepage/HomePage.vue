@@ -38,7 +38,7 @@
       },
       getNewsList:function(){
         api.getData('/newslist','').then(res=>{
-          this.$store.commit('addNewsList',res)
+          this.$store.commit('addNewsList',res.newsdata)
         })
       },
 
