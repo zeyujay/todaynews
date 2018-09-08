@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{
-    update:"下拉刷新",
     isfoorbar:true,
     searchword:[],
     isShowLabel:false,
@@ -16,9 +15,27 @@ export default new Vuex.Store({
     isOverlay:false,
     newsList:[],
     usertype:[],
-    users:[]
+    users:[],
+    // newsoption
+    isNewsOption:false,
+    isShowDefault:true,
+    currentNews:{},
+    clickNewsY:0,
+    newsOptionDialog:0
   },
   mutations:{
+    setNewsOptionDialog(state,y){
+      state.newsOptionDialog=y
+    },
+    setClickNewsY(state,y){
+      state.clickNewsY=y
+    },
+    setcurrentNews(state,news){
+      state.currentNews=news
+    },
+    changeNewsOption(state,is){
+      state.isNewsOption=is
+    },
     addUsers(state,users){
       state.users=users
     },

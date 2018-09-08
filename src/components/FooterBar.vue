@@ -1,5 +1,5 @@
 <template id="">
-  <ul class="footer">
+  <ul class="footer" id="footer">
     <li v-for="item in footerBar">
         <router-link :to="{name:item.page}" class="link">
           <i :class="'iconfont icon-'+item.icon"></i>

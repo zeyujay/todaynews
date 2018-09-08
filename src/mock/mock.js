@@ -64,7 +64,7 @@ for (let i = 2; i <= 12; i++) {
 //   }
 //   NewsData.push(news)
 // }
-let NewsData={'newsdata|10-20':[
+let NewsData={'newsdata|5-10':[
   {
     'id':'@guid',
     'title':'@csentence(20,30)',

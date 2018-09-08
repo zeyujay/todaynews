@@ -3,6 +3,7 @@
       <Header-Bar></Header-Bar>
       <Label-Nav></Label-Nav>
       <News-List></News-List>
+      <News-Option></News-Option>
     </div>
 </template>
 <script type="text/javascript">
@@ -11,6 +12,7 @@
   import LabelNav from '../LabelNav.vue'
   import NewsList from './NewsList.vue'
   import UpdatePlugin from '../UpdatePlugin.vue'
+  import NewsOption from './NewsOption.vue'
   export default{
     name:'HomePage',
     components:{
@@ -18,6 +20,7 @@
       LabelNav,
       NewsList,
       UpdatePlugin,
+      NewsOption
     },
     data(){
       return {
